@@ -109,6 +109,16 @@ public class UserDAO implements IUserDAO {
 
     @Override
     public void addUserTransaction(User user, int[] permissionIds) throws SQLException {
+        addUserTransactionInternal(user, permissionIds, false);
+    }
+
+    @Override
+    public void addUserTransactionWithSqlFailureDemo(User user) throws SQLException {
+        addUserTransactionInternal(user, new int[]{1}, true);
+    }
+
+    private void addUserTransactionInternal(User user, int[] permissionIds, boolean forceSqlFailure)
+            throws SQLException {
         try (Connection connection = getConnection()) {
             connection.setAutoCommit(false);
             try {
@@ -138,6 +148,16 @@ public class UserDAO implements IUserDAO {
                             statement.addBatch();
                         }
                         statement.executeBatch();
+                    }
+                }
+
+                if (forceSqlFailure) {
+                    // Deliberately violate fk_user_permission_permission after valid writes.
+                    try (PreparedStatement statement = connection.prepareStatement(
+                            "INSERT INTO user_permission (user_id, permission_id) VALUES (?, ?)")) {
+                        statement.setInt(1, userId);
+                        statement.setInt(2, 999999999);
+                        statement.executeUpdate();
                     }
                 }
 

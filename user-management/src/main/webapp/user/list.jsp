@@ -17,10 +17,13 @@
             <h1>Người dùng</h1>
             <p class="subtitle">Quản lý thông tin và quốc gia của người dùng.</p>
         </div>
-        <a class="button button-primary" href="${pageContext.request.contextPath}/users?action=create">+ Thêm User</a>
-        <a class="button button-secondary" href="${pageContext.request.contextPath}/users?action=test-without-tran">Chạy demo không Transaction</a>
-        <a class="button button-secondary" href="${pageContext.request.contextPath}/users?action=test-use-tran">Kiểm tra rollback</a>
-        <a class="button button-secondary" href="${pageContext.request.contextPath}/users?action=test-use-tran-success">Chạy và commit</a>
+        <div class="header-actions">
+            <a class="button button-primary" href="${pageContext.request.contextPath}/users?action=create">+ Thêm User</a>
+            <a class="button button-secondary" href="${pageContext.request.contextPath}/users?action=test-without-tran">Chạy demo không Transaction</a>
+            <a class="button button-secondary" href="${pageContext.request.contextPath}/users?action=test-use-tran">Kiểm tra rollback</a>
+            <a class="button button-secondary" href="${pageContext.request.contextPath}/users?action=test-use-tran-success">Chạy và commit</a>
+            <a class="button button-secondary" href="${pageContext.request.contextPath}/users?action=test-user-transaction-rollback">Test rollback khi thêm User</a>
+        </div>
     </header>
 
     <c:if test="${not empty param.message}">
@@ -33,6 +36,8 @@
                 <c:when test="${param.message == 'transaction-rolled-back'}">UPDATE lỗi như dự kiến; transaction đã rollback. Bảng Employee hiện không còn bản ghi.</c:when>
                 <c:when test="${param.message == 'transaction-committed'}">Transaction đã commit: Quynh có lương 999.99 và Ngan có lương 20.00 trong bảng Employee.</c:when>
                 <c:when test="${param.message == 'transaction-unexpected-success'}">Luồng kiểm tra rollback không phát sinh lỗi; vui lòng kiểm tra cấu hình database/driver.</c:when>
+                <c:when test="${param.message == 'user-transaction-rolled-back'}">SQL lỗi đã kích hoạt rollback. Không có User hoặc quyền nào từ demo được lưu; kiểm tra console để lấy email đối chiếu.</c:when>
+                <c:when test="${param.message == 'user-transaction-unexpected-success'}">Demo không phát sinh lỗi SQL; hãy xác nhận bảng user_permission có khóa ngoại đúng.</c:when>
             </c:choose>
         </div>
     </c:if>

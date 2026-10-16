@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.UUID;
 
 /** Handles user list, CRUD, country search, and name sorting requests through the DAO. */
 public class UserServlet extends HttpServlet {
@@ -33,6 +34,7 @@ public class UserServlet extends HttpServlet {
                 case "test-without-tran" -> testWithoutTran(request, response);
                 case "test-use-tran" -> testUseTran(request, response, true);
                 case "test-use-tran-success" -> testUseTran(request, response, false);
+                case "test-user-transaction-rollback" -> testUserTransactionRollback(request, response);
                 case "list", "search", "sort" -> listUsers(request, response);
                 default -> response.sendError(HttpServletResponse.SC_NOT_FOUND);
             }
@@ -66,6 +68,24 @@ public class UserServlet extends HttpServlet {
                 System.out.println("UPDATE lỗi như dự kiến; transaction đã rollback.");
                 exception.printStackTrace();
                 response.sendRedirect(request.getContextPath() + "/users?message=transaction-rolled-back");
+                return;
+            }
+            showDatabaseError(request, response);
+        }
+    }
+
+    private void testUserTransactionRollback(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String email = "transaction-rollback-" + UUID.randomUUID() + "@example.test";
+        User demoUser = new User("Transaction Rollback Demo", email, "Demo");
+        try {
+            userDAO.addUserTransactionWithSqlFailureDemo(demoUser);
+            response.sendRedirect(request.getContextPath() + "/users?message=user-transaction-unexpected-success");
+        } catch (SQLException exception) {
+            if (exception.getSQLState() != null && exception.getSQLState().startsWith("23")) {
+                System.out.println("Demo rollback: kiểm tra không còn User với email " + email);
+                exception.printStackTrace();
+                response.sendRedirect(request.getContextPath() + "/users?message=user-transaction-rolled-back");
                 return;
             }
             showDatabaseError(request, response);

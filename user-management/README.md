@@ -31,6 +31,20 @@ Endpoint này chủ động xóa và tạo lại riêng bảng `Employee` mỗi 
 
 Cả hai URL đều xóa và tạo lại riêng bảng `Employee` trước giao dịch để kết quả có thể lặp lại. Mỗi lần chạy sẽ thay thế nội dung hiện có của bảng này.
 
+## Kiểm chứng rollback khi thêm User
+
+`/users?action=test-user-transaction-rollback` gọi cùng logic transaction của `addUserTransaction()` với một User thử nghiệm. DAO ghi User và quyền hợp lệ trong transaction, sau đó cố tình thêm một quyền không tồn tại để vi phạm khóa ngoại. DAO gọi `rollback()` và ném lỗi lên Servlet; email dùng để kiểm tra được in trong log Tomcat. Cần chạy `database/transaction-schema.sql` trước để có bảng quyền và khóa ngoại. Dùng email trong log để xác minh rollback:
+
+```sql
+SELECT * FROM users WHERE email = '<email-from-tomcat-log>';
+SELECT up.*
+FROM user_permission up
+JOIN users u ON u.id = up.user_id
+WHERE u.email = '<email-from-tomcat-log>';
+```
+
+Hai truy vấn không trả về dòng nào nếu rollback thành công.
+
 ## Đóng gói và chạy
 
 ```sh
