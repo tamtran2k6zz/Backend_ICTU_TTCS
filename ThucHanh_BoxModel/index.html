@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thực hành CSS box model với border, background, padding và margin.">
+    <title>Thực hành Box Model</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="page-header">
+    <p class="eyebrow">THỰC HÀNH CSS</p>
+    <h1>Sử dụng Box Model</h1>
+    <p>Quan sát nội dung, phần đệm, đường viền và khoảng cách giữa các hộp.</p>
+</header>
+
+<main>
+    <div class="boxmodel">
+        <p id="boxmodel1">Mô hình hộp trong CSS về cơ bản là một hộp bao quanh phần tử HTML. Nó bao gồm: lề (margin), viền (border), phần đệm (padding) và nội dung (content).</p>
+        <p id="boxmodel2">Mô hình hộp trong CSS về cơ bản là một hộp bao quanh phần tử HTML. Nó bao gồm: lề (margin), viền (border), phần đệm (padding) và nội dung (content).</p>
+        <p id="boxmodel3">Mô hình hộp trong CSS về cơ bản là một hộp bao quanh phần tử HTML. Nó bao gồm: lề (margin), viền (border), phần đệm (padding) và nội dung (content).</p>
+    </div>
+
+    <section class="legend" aria-labelledby="legend-title">
+        <h2 id="legend-title">Các lớp của mô hình hộp</h2>
+        <ul>
+            <li><span class="swatch content"></span><strong>Content</strong> — phần văn bản bên trong.</li>
+            <li><span class="swatch padding"></span><strong>Padding</strong> — khoảng trống giữa văn bản và viền.</li>
+            <li><span class="swatch border"></span><strong>Border</strong> — đường viền bao quanh mỗi hộp.</li>
+            <li><span class="swatch margin"></span><strong>Margin</strong> — khoảng cách bên ngoài viền.</li>
+        </ul>
+    </section>
+</main>
+
+<footer class="page-footer">Thử thay đổi giá trị trong <code>styles.css</code> để quan sát mô hình hộp.</footer>
+</body>
+</html>

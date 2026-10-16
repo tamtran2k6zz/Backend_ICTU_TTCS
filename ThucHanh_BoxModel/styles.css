@@ -1,0 +1,163 @@
+:root {
+    color-scheme: light;
+    --ink: #263c36;
+    --muted: #6c7d75;
+    --paper: #fbfaf6;
+    --green: #526d5b;
+    --line: #e6e3da;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 320px;
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Arial, sans-serif;
+    line-height: 1.65;
+}
+
+.page-header {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 58px 24px 18px;
+    text-align: center;
+}
+
+.eyebrow {
+    margin: 0 0 8px;
+    color: #a45d43;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+}
+
+h1,
+h2 {
+    font-family: Georgia, serif;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(34px, 6vw, 48px);
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.page-header > p:last-child {
+    margin: 12px 0 0;
+    color: var(--muted);
+}
+
+.boxmodel {
+    width: min(800px, calc(100% - 40px));
+    margin: 32px auto 0;
+    padding: 10px;
+    border: 10px solid;
+    border-color: chartreuse aqua blue blueviolet;
+    background-color: #eff4e8;
+}
+
+.boxmodel p {
+    margin-top: 0;
+    padding: 10px;
+    border: 3px dotted darkred;
+    background-color: #fffdf9;
+    color: #374740;
+}
+
+#boxmodel1 {
+    margin-bottom: 20px;
+}
+
+#boxmodel2 {
+    margin-bottom: 40px;
+}
+
+#boxmodel3 {
+    margin-bottom: 60px;
+}
+
+.legend {
+    width: min(800px, calc(100% - 40px));
+    margin: 40px auto 0;
+    padding: 22px 24px;
+    border: 1px solid var(--line);
+    background: #fff;
+}
+
+.legend h2 {
+    margin: 0 0 12px;
+    font-size: 21px;
+    font-weight: 500;
+}
+
+.legend ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 24px;
+    margin: 0;
+    padding: 0;
+    color: var(--muted);
+    font-size: 14px;
+    list-style: none;
+}
+
+.legend strong {
+    color: var(--ink);
+}
+
+.swatch {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 7px;
+    border-radius: 2px;
+    vertical-align: -1px;
+}
+
+.content {
+    background: #d8e9ce;
+}
+
+.padding {
+    background: #f0d79d;
+}
+
+.border {
+    background: darkred;
+}
+
+.margin {
+    background: #e6e3da;
+}
+
+.page-footer {
+    margin-top: 38px;
+    padding: 20px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+}
+
+.page-footer code {
+    color: #8f4d3a;
+}
+
+@media (max-width: 600px) {
+    .page-header {
+        padding-top: 42px;
+    }
+
+    .legend ul {
+        grid-template-columns: 1fr;
+    }
+
+    .legend {
+        padding: 19px;
+    }
+}
