@@ -1,0 +1,3 @@
+# Layout refactoring — CreativeChronicle
+
+The old gallery used absolutely positioned images inside a fixed-height parent. Absolute children leave normal document flow, so the parent cannot grow with them; on narrow screens, the images overlap the next section. CSS Grid makes the relationship explicit: the main image spans two rows while the two supporting images occupy the right column. The grid can switch to one column on mobile, where every image gets its own row and keeps a natural place in the page. `object-fit: cover` preserves the image frame without distortion. The author row uses Flexbox because it aligns a small group of items on one axis and can wrap the share controls when space is limited.
