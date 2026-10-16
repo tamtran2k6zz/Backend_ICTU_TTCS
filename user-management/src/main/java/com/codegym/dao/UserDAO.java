@@ -3,6 +3,7 @@ package com.codegym.dao;
 import com.codegym.model.User;
 
 import java.sql.Connection;
+import java.sql.CallableStatement;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -59,6 +60,37 @@ public class UserDAO implements IUserDAO {
             try (ResultSet resultSet = statement.executeQuery()) {
                 return resultSet.next() ? mapUser(resultSet) : null;
             }
+        }
+    }
+
+    @Override
+    public User getUserById(int id) throws SQLException {
+        String call = "{CALL get_user_by_id(?)}";
+        try (Connection connection = getConnection();
+             CallableStatement statement = connection.prepareCall(call)) {
+            statement.setInt(1, id);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (!resultSet.next()) {
+                    return null;
+                }
+                return new User(
+                        id,
+                        resultSet.getString("name"),
+                        resultSet.getString("email"),
+                        resultSet.getString("country"));
+            }
+        }
+    }
+
+    @Override
+    public void insertUserStore(User user) throws SQLException {
+        String call = "{CALL insert_user(?, ?, ?)}";
+        try (Connection connection = getConnection();
+             CallableStatement statement = connection.prepareCall(call)) {
+            statement.setString(1, user.getName());
+            statement.setString(2, user.getEmail());
+            statement.setString(3, user.getCountry());
+            statement.executeUpdate();
         }
     }
 

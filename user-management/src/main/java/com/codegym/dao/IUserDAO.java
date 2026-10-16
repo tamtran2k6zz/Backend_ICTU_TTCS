@@ -11,6 +11,10 @@ public interface IUserDAO {
 
     User selectUser(int id) throws SQLException;
 
+    User getUserById(int id) throws SQLException;
+
+    void insertUserStore(User user) throws SQLException;
+
     List<User> selectAllUsers(String country, String sortOrder) throws SQLException;
 
     boolean deleteUser(int id) throws SQLException;

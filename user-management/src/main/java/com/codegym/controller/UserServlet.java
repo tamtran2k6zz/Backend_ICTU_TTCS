@@ -48,7 +48,7 @@ public class UserServlet extends HttpServlet {
 
         try {
             if ("create".equals(action)) {
-                userDAO.insertUser(readUser(request, 0));
+                userDAO.insertUserStore(readUser(request, 0));
             } else if ("edit".equals(action)) {
                 int id = parseId(request.getParameter("id"));
                 if (!userDAO.updateUser(readUser(request, id))) {
@@ -111,7 +111,9 @@ public class UserServlet extends HttpServlet {
     private void showUserForm(HttpServletRequest request, HttpServletResponse response, String page)
             throws SQLException, ServletException, IOException {
         int id = parseId(request.getParameter("id"));
-        User user = userDAO.selectUser(id);
+        User user = "/user/edit.jsp".equals(page)
+                ? userDAO.getUserById(id)
+                : userDAO.selectUser(id);
         if (user == null) {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
             return;
