@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 520" role="img" aria-labelledby="title desc">
+  <title id="title">Đêm bên hiên nhà</title>
+  <desc id="desc">Minh họa một căn nhà nhỏ sáng đèn dưới trăng, nép bên những ngọn đồi xanh.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#263b57"/>
+      <stop offset="1" stop-color="#7b7890"/>
+    </linearGradient>
+    <linearGradient id="window" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe2a0"/>
+      <stop offset="1" stop-color="#e99a59"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="520" fill="url(#sky)"/>
+  <circle cx="1110" cy="118" r="54" fill="#f6e5bf" opacity=".92"/>
+  <g fill="#fff4d8" opacity=".8">
+    <circle cx="210" cy="93" r="2.5"/><circle cx="348" cy="163" r="2"/>
+    <circle cx="525" cy="72" r="2.5"/><circle cx="720" cy="132" r="2"/>
+    <circle cx="891" cy="66" r="2"/><circle cx="1290" cy="210" r="2.5"/>
+    <circle cx="1000" cy="248" r="2"/><circle cx="430" cy="233" r="2.5"/>
+  </g>
+  <path d="M0 327Q190 242 375 324T755 305T1120 307T1440 280V520H0Z" fill="#536b70"/>
+  <path d="M0 386Q235 292 466 379T890 349T1248 364T1440 330V520H0Z" fill="#344e50"/>
+  <path d="M0 442Q244 365 470 433T923 412T1290 422T1440 390V520H0Z" fill="#243d3e"/>
+  <g transform="translate(430 238)">
+    <path d="M0 94 131 0l131 94v164H0Z" fill="#d4ad7e"/>
+    <path d="m-22 99 153-112 153 112-17 22-136-99L-5 121Z" fill="#493e45"/>
+    <rect x="38" y="123" width="54" height="67" rx="2" fill="url(#window)"/>
+    <rect x="161" y="123" width="54" height="67" rx="2" fill="url(#window)"/>
+    <rect x="108" y="174" width="48" height="84" fill="#604844"/>
+    <circle cx="146" cy="215" r="3" fill="#e9c486"/>
+    <path d="M25 258h214" stroke="#d9c39b" stroke-width="5" opacity=".72"/>
+  </g>
+  <path d="M0 476q170-31 335 0t332 0 332 0 441 0v44H0Z" fill="#172f31"/>
+  <g fill="#182e30">
+    <path d="M310 339h18v135h-18zM274 372q45-72 91 0-45 14-91 0ZM270 401q48-68 98 0-49 16-98 0Z"/>
+    <path d="M1130 303h15v153h-15zM1096 337q42-67 85 0-42 14-85 0ZM1091 365q47-66 96 0-48 15-96 0Z"/>
+  </g>
+  <path d="M559 495q170-23 256 0" fill="none" stroke="#c29d73" stroke-width="3" opacity=".65"/>
+</svg>
