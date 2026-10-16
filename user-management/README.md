@@ -6,7 +6,9 @@
 
 Chạy `database/schema.sql` trong MySQL để tạo database `demo`, bảng `users` và dữ liệu mẫu.
 
-Sau đó chạy `database/stored-procedures.sql` để tạo `get_user_by_id` và `insert_user` trước khi dùng chức năng thêm hoặc mở form sửa User.
+Sau đó chạy `database/stored-procedures.sql` để tạo `get_user_by_id` và `insert_user`. Form sửa dùng `get_user_by_id`; `insert_user` được giữ lại từ bài Stored Procedure trước.
+
+Chạy tiếp `database/transaction-schema.sql` để tạo bảng `permission`, bảng liên kết `user_permission` và các quyền mẫu. Khi thêm User, ứng dụng ghi User và các quyền đã chọn trong cùng một transaction JDBC; lỗi ở bước gán quyền sẽ rollback cả hai thao tác.
 
 `UserDAO` đọc cấu hình từ biến môi trường:
 

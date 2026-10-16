@@ -15,6 +15,8 @@ public interface IUserDAO {
 
     void insertUserStore(User user) throws SQLException;
 
+    void addUserTransaction(User user, int[] permissionIds) throws SQLException;
+
     List<User> selectAllUsers(String country, String sortOrder) throws SQLException;
 
     boolean deleteUser(int id) throws SQLException;

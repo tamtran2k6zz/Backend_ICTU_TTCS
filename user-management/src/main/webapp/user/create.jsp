@@ -24,6 +24,13 @@
             <input id="email" name="email" type="email" maxlength="220" required value="<c:out value='${user.email}'/>">
             <label for="country">Quốc gia</label>
             <input id="country" name="country" type="text" maxlength="120" required value="<c:out value='${user.country}'/>">
+            <fieldset class="permissions-fieldset">
+                <legend>Quyền hạn</legend>
+                <label class="permission-option"><input type="checkbox" name="permissions" value="1"> Thêm (Add)</label>
+                <label class="permission-option"><input type="checkbox" name="permissions" value="2"> Sửa (Edit)</label>
+                <label class="permission-option"><input type="checkbox" name="permissions" value="3"> Xóa (Delete)</label>
+                <label class="permission-option"><input type="checkbox" name="permissions" value="4"> Xem (View)</label>
+            </fieldset>
             <div class="form-actions">
                 <button class="button button-primary" type="submit">Lưu User</button>
                 <a class="button button-light" href="${pageContext.request.contextPath}/users">Hủy</a>

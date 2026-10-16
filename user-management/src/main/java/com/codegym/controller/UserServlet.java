@@ -48,7 +48,9 @@ public class UserServlet extends HttpServlet {
 
         try {
             if ("create".equals(action)) {
-                userDAO.insertUserStore(readUser(request, 0));
+                User newUser = readUser(request, 0);
+                int[] permissionIds = parsePermissionIds(request.getParameterValues("permissions"));
+                userDAO.addUserTransaction(newUser, permissionIds);
             } else if ("edit".equals(action)) {
                 int id = parseId(request.getParameter("id"));
                 if (!userDAO.updateUser(readUser(request, id))) {
@@ -148,6 +150,25 @@ public class UserServlet extends HttpServlet {
     private String parameter(HttpServletRequest request, String name) {
         String value = request.getParameter(name);
         return value == null ? "" : value.trim();
+    }
+
+    private int[] parsePermissionIds(String[] permissionValues) {
+        if (permissionValues == null || permissionValues.length == 0) {
+            return new int[0];
+        }
+
+        int[] permissionIds = new int[permissionValues.length];
+        for (int index = 0; index < permissionValues.length; index++) {
+            try {
+                permissionIds[index] = Integer.parseInt(permissionValues[index]);
+            } catch (NumberFormatException exception) {
+                throw new IllegalArgumentException("Quyền hạn được chọn không hợp lệ.");
+            }
+            if (permissionIds[index] < 1 || permissionIds[index] > 4) {
+                throw new IllegalArgumentException("Quyền hạn được chọn không hợp lệ.");
+            }
+        }
+        return permissionIds;
     }
 
     private int parseId(String value) {

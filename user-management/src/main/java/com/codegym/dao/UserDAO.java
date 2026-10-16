@@ -95,6 +95,51 @@ public class UserDAO implements IUserDAO {
     }
 
     @Override
+    public void addUserTransaction(User user, int[] permissionIds) throws SQLException {
+        try (Connection connection = getConnection()) {
+            connection.setAutoCommit(false);
+            try {
+                int userId;
+                try (PreparedStatement statement = connection.prepareStatement(
+                        INSERT_USER, java.sql.Statement.RETURN_GENERATED_KEYS)) {
+                    statement.setString(1, user.getName());
+                    statement.setString(2, user.getEmail());
+                    statement.setString(3, user.getCountry());
+                    statement.executeUpdate();
+
+                    try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                        if (!generatedKeys.next()) {
+                            throw new SQLException("MySQL did not return the generated user ID.");
+                        }
+                        userId = generatedKeys.getInt(1);
+                    }
+                }
+
+                user.setId(userId);
+                if (permissionIds != null && permissionIds.length > 0) {
+                    try (PreparedStatement statement = connection.prepareStatement(
+                            "INSERT INTO user_permission (user_id, permission_id) VALUES (?, ?)")) {
+                        for (int permissionId : permissionIds) {
+                            statement.setInt(1, userId);
+                            statement.setInt(2, permissionId);
+                            statement.addBatch();
+                        }
+                        statement.executeBatch();
+                    }
+                }
+
+                connection.commit();
+            } catch (SQLException failure) {
+                rollback(connection, failure);
+                throw failure;
+            } catch (RuntimeException failure) {
+                rollback(connection, failure);
+                throw failure;
+            }
+        }
+    }
+
+    @Override
     public List<User> selectAllUsers(String country, String sortOrder) throws SQLException {
         boolean filterByCountry = country != null && !country.isBlank();
         String direction = "DESC".equalsIgnoreCase(sortOrder) ? "DESC" : "ASC";
@@ -144,5 +189,13 @@ public class UserDAO implements IUserDAO {
                 resultSet.getString("name"),
                 resultSet.getString("email"),
                 resultSet.getString("country"));
+    }
+
+    private void rollback(Connection connection, Throwable originalFailure) {
+        try {
+            connection.rollback();
+        } catch (SQLException rollbackFailure) {
+            originalFailure.addSuppressed(rollbackFailure);
+        }
     }
 }
