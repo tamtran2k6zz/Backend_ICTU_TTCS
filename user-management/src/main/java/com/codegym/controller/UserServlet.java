@@ -30,6 +30,7 @@ public class UserServlet extends HttpServlet {
                 case "create" -> forward(request, response, "/user/create.jsp");
                 case "edit" -> showUserForm(request, response, "/user/edit.jsp");
                 case "delete" -> showUserForm(request, response, "/user/delete.jsp");
+                case "test-without-tran" -> testWithoutTran(request, response);
                 case "list", "search", "sort" -> listUsers(request, response);
                 default -> response.sendError(HttpServletResponse.SC_NOT_FOUND);
             }
@@ -38,6 +39,12 @@ public class UserServlet extends HttpServlet {
         } catch (IllegalArgumentException exception) {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
         }
+    }
+
+    private void testWithoutTran(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
+        userDAO.insertUpdateWithoutTransaction();
+        response.sendRedirect(request.getContextPath() + "/users?message=non-transaction-demo");
     }
 
     @Override

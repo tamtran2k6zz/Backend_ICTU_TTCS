@@ -2,12 +2,16 @@ package com.codegym.dao;
 
 import com.codegym.model.User;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.CallableStatement;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +31,17 @@ public class UserDAO implements IUserDAO {
     private static final String DELETE_USER = "DELETE FROM users WHERE id = ?";
     private static final String UPDATE_USER =
             "UPDATE users SET name = ?, email = ?, country = ? WHERE id = ?";
+    private static final String SQL_INSERT_EMPLOYEE =
+            "INSERT INTO Employee (name, salary, created_Date) VALUES (?, ?, ?)";
+    private static final String SQL_UPDATE_EMPLOYEE =
+            "UPDATE Employee SET salary = ? WHERE name = ?";
+    private static final String SQL_TABLE_CREATE_EMPLOYEE = "CREATE TABLE Employee ("
+            + "id INT NOT NULL AUTO_INCREMENT, "
+            + "name VARCHAR(120) NOT NULL, "
+            + "salary DECIMAL(15, 2) NOT NULL, "
+            + "created_Date TIMESTAMP, "
+            + "PRIMARY KEY (id))";
+    private static final String SQL_TABLE_DROP_EMPLOYEE = "DROP TABLE IF EXISTS Employee";
 
     private final String jdbcUrl = setting("DB_URL", DEFAULT_URL);
     private final String jdbcUsername = setting("DB_USERNAME", "root");
@@ -136,6 +151,38 @@ public class UserDAO implements IUserDAO {
                 rollback(connection, failure);
                 throw failure;
             }
+        }
+    }
+
+    @Override
+    public void insertUpdateWithoutTransaction() {
+        try (Connection connection = getConnection();
+             Statement statement = connection.createStatement()) {
+            // Keep JDBC's default auto-commit enabled: each successful INSERT is saved immediately.
+            statement.execute(SQL_TABLE_DROP_EMPLOYEE);
+            statement.execute(SQL_TABLE_CREATE_EMPLOYEE);
+
+            try (PreparedStatement insert = connection.prepareStatement(SQL_INSERT_EMPLOYEE);
+                 PreparedStatement update = connection.prepareStatement(SQL_UPDATE_EMPLOYEE)) {
+                insert.setString(1, "Quynh");
+                insert.setBigDecimal(2, new BigDecimal("10.00"));
+                insert.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));
+                insert.executeUpdate();
+
+                insert.setString(1, "Ngan");
+                insert.setBigDecimal(2, new BigDecimal("20.00"));
+                insert.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));
+                insert.executeUpdate();
+
+                // Intentional parameter-index mistake from the exercise. Parameter 1 stays unset,
+                // so executeUpdate throws after the two auto-committed INSERT statements.
+                update.setBigDecimal(2, new BigDecimal("999.99"));
+                update.setString(2, "Quynh");
+                update.executeUpdate();
+            }
+        } catch (SQLException exception) {
+            System.out.println("Đã bắt được lỗi trong quá trình thực thi SQL:");
+            exception.printStackTrace();
         }
     }
 

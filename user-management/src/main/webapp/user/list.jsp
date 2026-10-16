@@ -18,6 +18,7 @@
             <p class="subtitle">Quản lý thông tin và quốc gia của người dùng.</p>
         </div>
         <a class="button button-primary" href="${pageContext.request.contextPath}/users?action=create">+ Thêm User</a>
+        <a class="button button-secondary" href="${pageContext.request.contextPath}/users?action=test-without-tran">Chạy demo không Transaction</a>
     </header>
 
     <c:if test="${not empty param.message}">
@@ -26,6 +27,7 @@
                 <c:when test="${param.message == 'create'}">Đã thêm User thành công.</c:when>
                 <c:when test="${param.message == 'edit'}">Đã cập nhật User thành công.</c:when>
                 <c:when test="${param.message == 'delete'}">Đã xóa User thành công.</c:when>
+                <c:when test="${param.message == 'non-transaction-demo'}">Demo đã chạy. Kiểm tra console để xem lỗi UPDATE và bảng Employee để xác nhận hai INSERT vẫn được lưu.</c:when>
             </c:choose>
         </div>
     </c:if>

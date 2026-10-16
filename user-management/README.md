@@ -18,6 +18,12 @@ Chạy tiếp `database/transaction-schema.sql` để tạo bảng `permission`,
 
 Đặt các biến này theo cấu hình MySQL cục bộ trước khi khởi động Tomcat. Không commit mật khẩu thật vào Git.
 
+## Demo SQL không sử dụng transaction
+
+Mở `/users?action=test-without-tran` hoặc chọn **Chạy demo không Transaction** trên trang danh sách. Demo tạo lại bảng `Employee`, thêm Quynh và Ngan, sau đó cố tình chạy một UPDATE thiếu tham số. JDBC giữ auto-commit mặc định, nên hai INSERT đã hoàn tất vẫn còn trong bảng dù UPDATE thất bại. Lỗi được in trong log của Tomcat; kiểm tra kết quả bằng `SELECT * FROM Employee;`.
+
+Endpoint này chủ động xóa và tạo lại riêng bảng `Employee` mỗi lần chạy để dữ liệu minh họa có kết quả ổn định. Chỉ chạy trong database demo của bài thực hành.
+
 ## Đóng gói và chạy
 
 ```sh
