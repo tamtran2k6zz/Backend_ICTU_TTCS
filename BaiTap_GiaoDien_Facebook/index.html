@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Giao diện mạng xã hội giản lược với header và các sidebar cố định bằng CSS.">
+    <title>Bảng tin — Giao diện thực hành</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#bang-tin">Đi tới bảng tin</a>
+
+<header class="topbar">
+    <div class="topbar-left">
+        <a class="facebook-mark" href="#bang-tin" aria-label="Trang chủ">f</a>
+        <label class="search-box">
+            <span class="visually-hidden">Tìm kiếm</span>
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input type="search" placeholder="Tìm kiếm trên Facebook">
+        </label>
+    </div>
+
+    <nav class="top-navigation" aria-label="Điều hướng chính">
+        <a class="top-nav-link selected" href="#bang-tin" aria-label="Trang chủ" title="Trang chủ"><span aria-hidden="true">⌂</span></a>
+        <a class="top-nav-link" href="#video" aria-label="Video" title="Video"><span aria-hidden="true">▷</span></a>
+        <a class="top-nav-link" href="#marketplace" aria-label="Marketplace" title="Marketplace"><span aria-hidden="true">▤</span></a>
+    </nav>
+
+    <div class="topbar-right">
+        <button class="round-button menu-button" type="button" aria-label="Menu">☰</button>
+        <button class="round-button" type="button" aria-label="Tin nhắn">▣</button>
+        <button class="round-button notification-button" type="button" aria-label="Thông báo">♧<span class="notification-dot"></span></button>
+        <a class="profile-shortcut" href="#trang-ca-nhan" aria-label="Trang cá nhân của Minh Anh"><span class="avatar avatar-blue">MA</span></a>
+    </div>
+</header>
+
+<aside class="left-sidebar" aria-label="Điều hướng và lối tắt">
+    <a class="profile-row" href="#trang-ca-nhan"><span class="avatar avatar-blue">MA</span><strong>Minh Anh</strong></a>
+    <nav class="side-navigation" aria-label="Lối tắt">
+        <a href="#ban-be"><span class="side-icon friends-icon" aria-hidden="true">♧</span><span>Bạn bè</span></a>
+        <a href="#nhom"><span class="side-icon groups-icon" aria-hidden="true">◉</span><span>Nhóm</span></a>
+        <a href="#video"><span class="side-icon video-icon" aria-hidden="true">▷</span><span>Video</span></a>
+        <a href="#ky-niem"><span class="side-icon memories-icon" aria-hidden="true">▣</span><span>Kỷ niệm</span></a>
+        <a href="#da-luu"><span class="side-icon saved-icon" aria-hidden="true">▤</span><span>Đã lưu</span></a>
+        <a href="#marketplace"><span class="side-icon market-icon" aria-hidden="true">⌂</span><span>Marketplace</span></a>
+    </nav>
+
+    <div class="sidebar-divider"></div>
+    <div class="shortcuts-heading"><h2>Lối tắt của bạn</h2><a href="#chinh-sua">Chỉnh sửa</a></div>
+    <a class="shortcut-row" href="#nhom"><span class="shortcut-thumb thumb-one">C</span><span>CLB Công nghệ thông tin</span></a>
+    <a class="shortcut-row" href="#nhom"><span class="shortcut-thumb thumb-two">B</span><span>Những người yêu sách</span></a>
+    <a class="shortcut-row" href="#nhom"><span class="shortcut-thumb thumb-three">✿</span><span>Góc cây xanh mỗi ngày</span></a>
+    <p class="sidebar-legal">Quyền riêng tư · Điều khoản · Quảng cáo · Cookie · Meta © 2026</p>
+</aside>
+
+<aside class="right-sidebar" aria-label="Thông tin bên lề">
+    <section class="sponsored-section">
+        <h2>Được tài trợ</h2>
+        <a class="sponsored-card" href="#quang-cao">
+            <div class="sponsored-art" aria-hidden="true"><span>GROW<br>GREEN</span><i>✿</i></div>
+            <span><strong>Thêm một chút xanh</strong><small>vuonnhaxanh.example</small></span>
+        </a>
+    </section>
+
+    <div class="right-divider"></div>
+    <section class="birthday-section">
+        <h2>Sinh nhật</h2>
+        <p><span class="gift-icon" aria-hidden="true">▣</span> Hôm nay là sinh nhật của <strong>Hoàng Nam</strong>.</p>
+    </section>
+
+    <div class="right-divider"></div>
+    <section class="contacts-section" id="ban-be">
+        <div class="contacts-heading"><h2>Người liên hệ</h2><div><button type="button" aria-label="Tìm người liên hệ">⌕</button><button type="button" aria-label="Tùy chọn">•••</button></div></div>
+        <a class="contact-row" href="#ban-be"><span class="avatar avatar-coral">HN<i></i></span><span>Hoàng Nam</span></a>
+        <a class="contact-row" href="#ban-be"><span class="avatar avatar-lavender">LT<i></i></span><span>Lan Trần</span></a>
+        <a class="contact-row" href="#ban-be"><span class="avatar avatar-gold">PQ<i></i></span><span>Phúc Quang</span></a>
+        <a class="contact-row" href="#ban-be"><span class="avatar avatar-teal">NY<i></i></span><span>Ngọc Yến</span></a>
+        <a class="contact-row" href="#ban-be"><span class="avatar avatar-rose">MT<i></i></span><span>Minh Tú</span></a>
+        <a class="contact-row" href="#ban-be"><span class="avatar avatar-green">DK<i></i></span><span>Đức Khánh</span></a>
+    </section>
+</aside>
+
+<main class="main-content" id="bang-tin">
+    <div class="feed">
+        <section class="stories-card" aria-label="Tin">
+            <a class="story story-own" href="#tao-tin">
+                <span class="story-photo own-photo"><span class="story-avatar avatar avatar-blue">MA</span><span class="add-story">+</span></span>
+                <span class="story-label"><strong>Tạo tin</strong></span>
+            </a>
+            <a class="story" href="#bai-viet-2">
+                <span class="story-photo story-photo-one"><span class="story-avatar avatar avatar-coral">LT</span></span>
+                <span class="story-label"><strong>Lan Trần</strong></span>
+            </a>
+            <a class="story" href="#bai-viet-1">
+                <span class="story-photo story-photo-two"><span class="story-avatar avatar avatar-gold">PQ</span></span>
+                <span class="story-label"><strong>Phúc Quang</strong></span>
+            </a>
+        </section>
+
+        <section class="composer card" aria-label="Tạo bài viết">
+            <div class="composer-top"><span class="avatar avatar-blue">MA</span><a href="#tao-bai-viet">Minh Anh ơi, bạn đang nghĩ gì thế?</a></div>
+            <div class="composer-divider"></div>
+            <div class="composer-actions">
+                <a href="#video"><span class="action-icon live-icon" aria-hidden="true">●</span>Video trực tiếp</a>
+                <a href="#anh"><span class="action-icon photo-icon" aria-hidden="true">▧</span>Ảnh/video</a>
+                <a href="#cam-xuc"><span class="action-icon feeling-icon" aria-hidden="true">☺</span>Cảm xúc</a>
+            </div>
+        </section>
+
+        <section class="feed-posts" aria-label="Bài viết mới">
+            <article class="post card" id="bai-viet-1">
+                <header class="post-header">
+                    <span class="avatar avatar-green">GM</span>
+                    <div class="post-author"><a href="#goc-moc">Góc Mộc</a><span>2 giờ <span aria-hidden="true">·</span> ◉</span></div>
+                    <button type="button" aria-label="Tùy chọn bài viết">•••</button>
+                </header>
+                <p class="post-text">Một buổi sáng chậm rãi, một tách cà phê thơm và chút nắng bên khung cửa. Chúc mọi người một ngày thật dịu dàng ☀️</p>
+                <div class="post-art coffee-art" role="img" aria-label="Minh họa tách cà phê và ánh nắng trên bàn gỗ">
+                    <span class="coffee-sun"></span><span class="coffee-window"></span><span class="coffee-table"></span><span class="coffee-cup"><i></i></span><span class="coffee-plant">♧</span>
+                    <span class="art-caption">slow morning<br><small>take it easy</small></span>
+                </div>
+                <div class="post-stats"><span><span class="like-bubble">👍</span> 128</span><span>18 bình luận · 6 lượt chia sẻ</span></div>
+                <div class="post-divider"></div>
+                <div class="post-actions"><button type="button"><span aria-hidden="true">♡</span>Thích</button><button type="button"><span aria-hidden="true">▢</span>Bình luận</button><button type="button"><span aria-hidden="true">↗</span>Chia sẻ</button></div>
+            </article>
+
+            <article class="post card" id="bai-viet-2">
+                <header class="post-header">
+                    <span class="avatar avatar-lavender">AT</span>
+                    <div class="post-author"><a href="#an-tran">An Trần</a><span>Hôm qua lúc 19:42 <span aria-hidden="true">·</span> ◉</span></div>
+                    <button type="button" aria-label="Tùy chọn bài viết">•••</button>
+                </header>
+                <p class="post-text">Cuối tuần rồi, mình thử trồng vài nhánh húng quế ở ban công. Không ngờ cây lên nhanh đến vậy! Một góc nhỏ xanh xanh làm căn phòng vui hẳn lên 🌱</p>
+                <div class="post-art garden-art" role="img" aria-label="Minh họa những chậu cây xanh trên ban công">
+                    <div class="garden-sky"></div><div class="garden-wall"></div><div class="garden-rail"></div><span class="pot pot-one">♧</span><span class="pot pot-two">♧</span><span class="pot pot-three">♧</span>
+                </div>
+                <div class="post-stats"><span><span class="like-bubble">👍</span> 46</span><span>9 bình luận</span></div>
+                <div class="post-divider"></div>
+                <div class="post-actions"><button type="button"><span aria-hidden="true">♡</span>Thích</button><button type="button"><span aria-hidden="true">▢</span>Bình luận</button><button type="button"><span aria-hidden="true">↗</span>Chia sẻ</button></div>
+            </article>
+        </section>
+    </div>
+</main>
+</body>
+</html>
