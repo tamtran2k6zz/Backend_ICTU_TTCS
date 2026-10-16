@@ -1,0 +1,97 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f2f0eb;
+    color: #35404a;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 18px;
+    line-height: 1.85;
+}
+
+.page {
+    min-height: 100vh;
+    padding: 56px 20px;
+}
+
+.reading-card {
+    width: min(100%, 760px);
+    margin: 0 auto;
+    padding: 56px 68px;
+    background: #fffefa;
+    border: 1px solid #e5dfd3;
+    box-shadow: 0 18px 48px rgb(43 49 54 / 8%);
+}
+
+.eyebrow {
+    margin: 0 0 12px;
+    color: #9a7650;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    color: #233b4d;
+    font-size: clamp(30px, 5vw, 42px);
+    font-weight: 500;
+    line-height: 1.25;
+    text-align: center;
+}
+
+.subtitle {
+    margin: 14px 0 28px;
+    color: #73808a;
+    font-size: 16px;
+    font-style: italic;
+    text-align: center;
+}
+
+hr {
+    width: 54px;
+    height: 2px;
+    margin: 0 auto 30px;
+    border: 0;
+    background: #c99b67;
+}
+
+.reading-card > p:not(.eyebrow, .subtitle, .signature) {
+    margin: 0 0 20px;
+    text-align: justify;
+    text-indent: 2em;
+}
+
+.reading-card .lead {
+    color: #8a5c39;
+    font-size: 20px;
+    font-style: italic;
+    text-align: left;
+    text-indent: 0;
+}
+
+.signature {
+    margin: 30px 0 0;
+    color: #9a7650;
+    font-size: 15px;
+    font-style: italic;
+    text-align: right;
+}
+
+@media (max-width: 600px) {
+    .page {
+        padding: 20px 12px;
+    }
+
+    .reading-card {
+        padding: 38px 25px;
+    }
+
+    body {
+        font-size: 16px;
+    }
+}
