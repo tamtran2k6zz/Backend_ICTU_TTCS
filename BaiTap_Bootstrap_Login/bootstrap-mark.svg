@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">StudyNest mark</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8179f0"/>
+      <stop offset="1" stop-color="#5b53ca"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="url(#bg)"/>
+  <path d="M22 14h15c8 0 13 4 13 11 0 4-2 7-6 9 5 2 8 5 8 11 0 8-6 13-15 13H22V14Zm9 8v9h6c3 0 5-2 5-5s-2-4-5-4h-6Zm0 17v11h6c4 0 6-2 6-6 0-3-2-5-6-5h-6Z" fill="#fff"/>
+</svg>
