@@ -26,11 +26,9 @@ public class UserDAO implements IUserDAO {
             "INSERT INTO users (name, email, country) VALUES (?, ?, ?)";
     private static final String SELECT_USER_BY_ID =
             "SELECT id, name, email, country FROM users WHERE id = ?";
-    private static final String SELECT_ALL_USERS =
-            "SELECT id, name, email, country FROM users";
-    private static final String DELETE_USER = "DELETE FROM users WHERE id = ?";
-    private static final String UPDATE_USER =
-            "UPDATE users SET name = ?, email = ?, country = ? WHERE id = ?";
+    private static final String LIST_USERS = "{CALL list_users(?, ?)}";
+    private static final String DELETE_USER = "{CALL delete_user(?, ?)}";
+    private static final String UPDATE_USER = "{CALL update_user(?, ?, ?, ?, ?)}";
     private static final String SQL_INSERT_EMPLOYEE =
             "INSERT INTO Employee (name, salary, created_Date) VALUES (?, ?, ?)";
     private static final String SQL_UPDATE_EMPLOYEE =
@@ -236,17 +234,11 @@ public class UserDAO implements IUserDAO {
 
     @Override
     public List<User> selectAllUsers(String country, String sortOrder) throws SQLException {
-        boolean filterByCountry = country != null && !country.isBlank();
         String direction = "DESC".equalsIgnoreCase(sortOrder) ? "DESC" : "ASC";
-        String sql = SELECT_ALL_USERS
-                + (filterByCountry ? " WHERE country LIKE ?" : "")
-                + " ORDER BY name " + direction + ", id ASC";
-
         try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
-            if (filterByCountry) {
-                statement.setString(1, "%" + country.trim() + "%");
-            }
+             CallableStatement statement = connection.prepareCall(LIST_USERS)) {
+            statement.setString(1, country == null || country.isBlank() ? null : country.trim());
+            statement.setString(2, direction);
             try (ResultSet resultSet = statement.executeQuery()) {
                 List<User> users = new ArrayList<>();
                 while (resultSet.next()) {
@@ -260,21 +252,25 @@ public class UserDAO implements IUserDAO {
     @Override
     public boolean deleteUser(int id) throws SQLException {
         try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement(DELETE_USER)) {
+             CallableStatement statement = connection.prepareCall(DELETE_USER)) {
             statement.setInt(1, id);
-            return statement.executeUpdate() > 0;
+            statement.registerOutParameter(2, java.sql.Types.INTEGER);
+            statement.execute();
+            return statement.getInt(2) > 0;
         }
     }
 
     @Override
     public boolean updateUser(User user) throws SQLException {
         try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement(UPDATE_USER)) {
-            statement.setString(1, user.getName());
-            statement.setString(2, user.getEmail());
-            statement.setString(3, user.getCountry());
-            statement.setInt(4, user.getId());
-            return statement.executeUpdate() > 0;
+             CallableStatement statement = connection.prepareCall(UPDATE_USER)) {
+            statement.setInt(1, user.getId());
+            statement.setString(2, user.getName());
+            statement.setString(3, user.getEmail());
+            statement.setString(4, user.getCountry());
+            statement.registerOutParameter(5, java.sql.Types.INTEGER);
+            statement.execute();
+            return statement.getInt(5) > 0;
         }
     }
 

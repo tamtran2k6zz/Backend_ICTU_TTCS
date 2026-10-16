@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-/** Handles user list, CRUD, country search, and name sorting requests. */
+/** Handles user list, CRUD, country search, and name sorting requests through the DAO. */
 public class UserServlet extends HttpServlet {
     private UserDAO userDAO;
 
@@ -84,12 +84,14 @@ public class UserServlet extends HttpServlet {
                 int[] permissionIds = parsePermissionIds(request.getParameterValues("permissions"));
                 userDAO.addUserTransaction(newUser, permissionIds);
             } else if ("edit".equals(action)) {
+                // UserDAO implements this update with the update_user stored procedure.
                 int id = parseId(request.getParameter("id"));
                 if (!userDAO.updateUser(readUser(request, id))) {
                     response.sendError(HttpServletResponse.SC_NOT_FOUND);
                     return;
                 }
             } else if ("delete".equals(action)) {
+                // UserDAO implements this delete with the delete_user stored procedure.
                 if (!userDAO.deleteUser(parseId(request.getParameter("id")))) {
                     response.sendError(HttpServletResponse.SC_NOT_FOUND);
                     return;
@@ -136,6 +138,7 @@ public class UserServlet extends HttpServlet {
             throws SQLException, ServletException, IOException {
         String country = request.getParameter("country");
         String sortOrder = "DESC".equalsIgnoreCase(request.getParameter("sort")) ? "DESC" : "ASC";
+        // UserDAO loads this list through the list_users MySQL stored procedure.
         request.setAttribute("listUser", userDAO.selectAllUsers(country, sortOrder));
         request.setAttribute("countryFilter", country == null ? "" : country.trim());
         request.setAttribute("sortOrder", sortOrder);

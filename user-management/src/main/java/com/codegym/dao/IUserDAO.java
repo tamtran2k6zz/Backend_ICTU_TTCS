@@ -5,7 +5,7 @@ import com.codegym.model.User;
 import java.sql.SQLException;
 import java.util.List;
 
-/** Defines CRUD, country-filter, and name-order operations for users. */
+/** Defines user operations, including stored-procedure-backed list, update, and delete methods. */
 public interface IUserDAO {
     void insertUser(User user) throws SQLException;
 
