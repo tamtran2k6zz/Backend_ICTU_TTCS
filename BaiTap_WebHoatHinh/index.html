@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Giao diện mẫu xem phim hoạt hình với danh sách, tìm kiếm, sắp xếp và trình phát video.">
+    <title>Mây Kể — Phim hoạt hình chọn lọc</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+    <a class="brand" href="#dau-trang" aria-label="Mây Kể, về đầu trang">
+        <span class="brand-mark" aria-hidden="true"><span></span><i></i></span>
+        <span class="brand-name">mây kể<span class="brand-period">.</span><small>PHIM HAY CHO BÉ</small></span>
+    </a>
+    <label class="header-search">
+        <span class="visually-hidden">Tìm phim hoạt hình</span>
+        <span aria-hidden="true">⌕</span>
+        <input id="header-search" type="search" placeholder="Tìm phim hoạt hình...">
+        <kbd>⌘ K</kbd>
+    </label>
+    <div class="header-actions">
+        <a class="parent-link" href="#goc-phu-huynh">Góc phụ huynh</a>
+        <button class="avatar-button" type="button" aria-label="Hồ sơ trẻ em">B</button>
+    </div>
+</header>
+
+<nav class="head-links" aria-label="Danh mục phim">
+    <div class="head-links-inner">
+        <a class="active" href="#danh-sach">Tất cả phim</a>
+        <a href="#moi-cap-nhat">Mới cập nhật</a>
+        <a href="#xem-nhieu">Xem nhiều</a>
+        <a href="#chu-de">Chủ đề</a>
+        <span class="safe-label"><span aria-hidden="true">✦</span> Nội dung chọn lọc cho bé</span>
+    </div>
+</nav>
+
+<main class="page-layout" id="dau-trang">
+    <aside class="left-content" id="danh-sach" aria-labelledby="playlist-title">
+        <div class="playlist-heading">
+            <p class="eyebrow">THƯ VIỆN PHIM</p>
+            <h1 id="playlist-title">Phim hoạt hình</h1>
+            <p>Những chuyến phiêu lưu được chọn lọc.</p>
+        </div>
+
+        <label class="playlist-search">
+            <span aria-hidden="true">⌕</span>
+            <span class="visually-hidden">Tìm theo tên phim</span>
+            <input id="movie-search" type="search" placeholder="Tìm tên phim...">
+        </label>
+
+        <div class="sort-controls" role="group" aria-label="Sắp xếp danh sách phim">
+            <button class="sort-button active" id="xem-nhieu" type="button" data-sort="popular" aria-pressed="true">Xem nhiều</button>
+            <button class="sort-button" id="moi-cap-nhat" type="button" data-sort="latest" aria-pressed="false">Mới cập nhật</button>
+        </div>
+
+        <div class="movie-list" id="movie-list" aria-live="polite">
+            <button class="movie-item active" type="button" aria-pressed="true">
+                <span class="movie-poster poster-bunny" aria-hidden="true"><i></i><b>BIG<br>BUCK<br>BUNNY</b></span>
+                <span class="movie-info"><strong>Big Buck Bunny</strong><small>12 phút <span>·</span> Không thoại</small><span class="movie-tags"><em>1080P</em><em>3+</em></span></span>
+                <span class="play-indicator" aria-hidden="true">▶</span>
+            </button>
+        </div>
+
+        <div class="playlist-note"><span aria-hidden="true">✓</span> Không quảng cáo chen ngang</div>
+    </aside>
+
+    <section class="right-content" aria-label="Trình phát và thông tin phim">
+        <div class="player-card">
+            <div class="player-frame">
+                <video id="movie-player" controls playsinline preload="none" poster="https://storage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg" aria-label="Trình phát phim Big Buck Bunny">
+                    <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                    Trình duyệt của bạn không hỗ trợ phát video HTML5.
+                </video>
+                <iframe id="youtube-player" title="Trình phát YouTube phim hoạt hình" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen hidden></iframe>
+                <div class="player-caption"><span class="live-dot"></span> MÂY KỂ ORIGINALS <span>·</span> PHIM NGẮN</div>
+            </div>
+        </div>
+
+        <div class="movie-details">
+            <div class="details-main">
+                <div class="eyebrow" id="movie-category">PHIÊU LƯU · HOẠT HÌNH 3D</div>
+                <h2 id="movie-title">Big Buck Bunny</h2>
+                <div class="movie-metadata" id="movie-metadata"><span>2008</span><span>12 phút</span><span>Không thoại</span><span>1080p</span></div>
+                <p id="movie-description">Chú thỏ to lớn hiền lành bắt đầu một ngày bình yên trong khu rừng. Một phim ngắn vui nhộn về tình bạn và lòng tốt.</p>
+            </div>
+            <div class="details-actions"><button type="button" aria-label="Lưu phim">♡ <span>Lưu phim</span></button><button type="button" aria-label="Chia sẻ phim">↗ <span>Chia sẻ</span></button></div>
+        </div>
+
+        <div class="player-notice"><span aria-hidden="true">✦</span><span>Phim mẫu từ Blender Open Movies. Âm thanh nguyên bản; không phải bản thuyết minh tiếng Việt.</span></div>
+
+        <div class="recommendations" id="chu-de">
+            <div class="recommendation-heading"><div><p class="eyebrow">XEM TIẾP</p><h2>Thêm chuyến phiêu lưu</h2></div><span class="recommendation-count" id="result-count">2 phim</span></div>
+            <div class="recommendation-list" id="recommendation-list"></div>
+        </div>
+
+        <div class="parent-note" id="goc-phu-huynh"><span aria-hidden="true">☼</span><p><strong>Góc phụ huynh</strong><br>Đây là giao diện học tập với phim mẫu. Hãy kiểm tra độ tuổi phù hợp và quyền phát hành trước khi bổ sung nội dung thực tế.</p></div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <span>© 2026 Mây Kể</span><span>Thiết kế một góc xem phim an toàn, không quảng cáo.</span>
+    <a href="https://studio.blender.org/projects/big-buck-bunny/" target="_blank" rel="noreferrer">Nguồn phim mẫu: Blender Open Movies ↗</a>
+</footer>
+</body>
+</html>
