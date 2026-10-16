@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thực hành tạo menu ngang có các mục môn học thả xuống bằng CSS.">
+    <title>Menu ngang ACCP i10</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body id="dau-trang">
+<header class="site-header">
+    <a class="brand" href="#dau-trang"><span class="brand-mark" aria-hidden="true">A</span> ACCP <strong>i10</strong></a>
+    <span class="header-label">LỘ TRÌNH HỌC TẬP</span>
+</header>
+
+<nav id="menu" class="semester-nav" aria-label="Menu học kỳ">
+    <ul>
+        <li class="has-submenu">
+            <a href="#sem-1"><span>Sem 1</span><span class="caret" aria-hidden="true">⌄</span></a>
+            <ul class="submenu" aria-label="Môn học kỳ 1">
+                <li><a href="#computing-fundamental">Computing Fundamental</a></li>
+                <li><a href="#c-programming">C Programming</a></li>
+                <li><a href="#dynamic-website">Building Dynamic Website</a></li>
+                <li><a href="#transact-sql">MS Transact-SQL</a></li>
+                <li><a href="#project">Project</a></li>
+            </ul>
+        </li>
+        <li class="has-submenu">
+            <a href="#sem-2"><span>Sem 2</span><span class="caret" aria-hidden="true">⌄</span></a>
+            <ul class="submenu" aria-label="Môn học kỳ 2">
+                <li><a href="#cloud-computing">Cloud Computing</a></li>
+                <li><a href="#apj-1">APJ - I</a></li>
+                <li><a href="#apj-2">APJ - II</a></li>
+                <li><a href="#apj-3">APJ - III</a></li>
+                <li><a href="#eproject">eProject</a></li>
+            </ul>
+        </li>
+        <li><a href="#sem-3">Sem 3</a></li>
+        <li><a href="#sem-4">Sem 4</a></li>
+    </ul>
+</nav>
+
+<main class="page-content">
+    <section class="intro-card">
+        <p class="eyebrow">CHƯƠNG TRÌNH ĐÀO TẠO</p>
+        <h1>Khám phá lộ trình ACCP i10</h1>
+        <p>Chọn học kỳ trên thanh menu ngang. Rê chuột hoặc dùng bàn phím để xem nhanh danh sách môn học.</p>
+    </section>
+
+    <section class="semester-section" id="sem-1">
+        <div class="section-heading"><span class="section-number">01</span><div><p class="eyebrow">HỌC KỲ 1</p><h2>Nền tảng lập trình</h2></div></div>
+        <div class="course-grid">
+            <article class="course-card" id="computing-fundamental"><span>CF</span><h3>Computing Fundamental</h3><p>Kiến thức cơ bản về máy tính và tư duy lập trình.</p></article>
+            <article class="course-card" id="c-programming"><span>C</span><h3>C Programming</h3><p>Làm quen với cú pháp và cấu trúc của ngôn ngữ C.</p></article>
+            <article class="course-card" id="dynamic-website"><span>WEB</span><h3>Building Dynamic Website</h3><p>Xây dựng giao diện web với HTML, CSS và JavaScript.</p></article>
+            <article class="course-card" id="transact-sql"><span>SQL</span><h3>MS Transact-SQL</h3><p>Truy vấn và thao tác dữ liệu với SQL.</p></article>
+            <article class="course-card" id="project"><span>PROJECT</span><h3>Project</h3><p>Áp dụng kiến thức học kỳ vào một dự án thực tế.</p></article>
+        </div>
+    </section>
+
+    <section class="semester-section" id="sem-2">
+        <div class="section-heading"><span class="section-number">02</span><div><p class="eyebrow">HỌC KỲ 2</p><h2>Phát triển ứng dụng</h2></div></div>
+        <div class="course-grid">
+            <article class="course-card" id="cloud-computing"><span>CC</span><h3>Cloud Computing</h3><p>Tìm hiểu dịch vụ và nền tảng điện toán đám mây.</p></article>
+            <article class="course-card" id="apj-1"><span>APJ I</span><h3>APJ - I</h3><p>Phát triển ứng dụng với Java, phần một.</p></article>
+            <article class="course-card" id="apj-2"><span>APJ II</span><h3>APJ - II</h3><p>Mở rộng kiến thức Java và lập trình hướng đối tượng.</p></article>
+            <article class="course-card" id="apj-3"><span>APJ III</span><h3>APJ - III</h3><p>Hoàn thiện kỹ năng xây dựng ứng dụng Java.</p></article>
+            <article class="course-card" id="eproject"><span>EP</span><h3>eProject</h3><p>Thực hiện dự án ứng dụng theo nhóm.</p></article>
+        </div>
+    </section>
+
+    <section class="semester-section compact" id="sem-3">
+        <div class="section-heading"><span class="section-number">03</span><div><p class="eyebrow">HỌC KỲ 3</p><h2>Sem 3</h2></div></div>
+        <p class="placeholder">Nội dung học kỳ sẽ được cập nhật.</p>
+    </section>
+
+    <section class="semester-section compact" id="sem-4">
+        <div class="section-heading"><span class="section-number">04</span><div><p class="eyebrow">HỌC KỲ 4</p><h2>Sem 4</h2></div></div>
+        <p class="placeholder">Nội dung học kỳ sẽ được cập nhật.</p>
+    </section>
+</main>
+
+<footer class="site-footer">ACCP i10 <span aria-hidden="true">·</span> Thực hành menu ngang bằng CSS</footer>
+</body>
+</html>
