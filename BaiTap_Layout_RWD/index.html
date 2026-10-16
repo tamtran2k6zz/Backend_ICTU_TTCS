@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bài thực hành bố cục trang web responsive bằng DIV và CSS.">
+    <title>Đi Đây Đó — Tạp chí du lịch</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="site-shell" id="dau-trang">
+    <div class="site-header">
+        <a class="brand" href="#dau-trang"><span class="brand-symbol">Đ</span><span>đi đây <strong>đó</strong></span></a>
+        <div class="header-tagline">GÓC NHÌN · HÀNH TRÌNH · TRẢI NGHIỆM</div>
+        <a class="header-action" href="#goi-y">Khám phá <span aria-hidden="true">↗</span></a>
+    </div>
+
+    <div class="main-nav" aria-label="Điều hướng chính">
+        <a class="nav-active" href="#dau-trang">Trang chủ</a>
+        <a href="#viet-nam">Việt Nam</a>
+        <a href="#the-gioi">Thế giới</a>
+        <a href="#cam-hung">Cảm hứng</a>
+        <a href="#goi-y">Cẩm nang</a>
+        <a href="#ve-chung-toi">Về chúng tôi</a>
+    </div>
+
+    <div class="page-intro">
+        <div><p class="eyebrow">TẠP CHÍ DU LỊCH CUỐI TUẦN</p><h1>Mở một trang mới,<br><em>đi một nơi mới.</em></h1></div>
+        <p class="intro-note">Những câu chuyện nhỏ trên những cung đường dài.<br>Chọn một điểm đến, phần còn lại cứ để trái tim dẫn lối.</p>
+    </div>
+
+    <div class="content-grid">
+        <div class="main-column">
+            <div class="feature-card" id="viet-nam">
+                <div class="feature-visual visual-ha-giang" role="img" aria-label="Minh họa núi non trùng điệp ở Hà Giang">
+                    <span class="visual-sun"></span><span class="mountain mountain-back"></span><span class="mountain mountain-middle"></span><span class="mountain mountain-front"></span><span class="visual-label">HÀ GIANG · VIỆT NAM</span>
+                </div>
+                <div class="feature-copy">
+                    <div class="story-meta"><span class="category">ĐIỂM ĐẾN</span><span>8 phút đọc</span></div>
+                    <h2>Hà Giang, nơi con đường chạm vào mây</h2>
+                    <p>Có những cung đường khiến ta muốn đi chậm lại. Qua mỗi khúc cua, núi đá mở ra một khoảng trời khác, và những mái nhà nhỏ nép mình bình yên giữa cao nguyên.</p>
+                    <a href="#goi-y" class="text-link">Đọc hành trình <span aria-hidden="true">→</span></a>
+                </div>
+            </div>
+
+            <div class="section-title" id="cam-hung"><div><p class="eyebrow">GHI CHÉP DỌC ĐƯỜNG</p><h2>Chuyện kể từ những nơi xa</h2></div><a href="#the-gioi">Xem tất cả <span aria-hidden="true">→</span></a></div>
+
+            <div class="story-grid">
+                <div class="story-card" id="the-gioi">
+                    <div class="story-visual visual-hoi-an" role="img" aria-label="Minh họa phố cổ Hội An lúc hoàng hôn"><span class="lantern lantern-one"></span><span class="lantern lantern-two"></span><span class="old-town"></span><span class="river"></span></div>
+                    <div class="story-copy"><div class="story-meta"><span class="category">PHỐ CỔ</span><span>5 phút đọc</span></div><h3>Một buổi chiều không hẹn ở Hội An</h3><p>Thả bước qua những con phố vàng khi đèn lồng vừa lên.</p></div>
+                </div>
+                <div class="story-card">
+                    <div class="story-visual visual-da-lat" role="img" aria-label="Minh họa đồi thông Đà Lạt trong sương"><span class="mist mist-one"></span><span class="pine pine-one">♠</span><span class="pine pine-two">♠</span><span class="pine pine-three">♠</span><span class="cabin"></span></div>
+                    <div class="story-copy"><div class="story-meta"><span class="category">CAO NGUYÊN</span><span>6 phút đọc</span></div><h3>Đà Lạt thức dậy trong màn sương</h3><p>Một sáng se lạnh, một ly cà phê nóng và rừng thông im lìm.</p></div>
+                </div>
+                <div class="story-card">
+                    <div class="story-visual visual-bien" role="img" aria-label="Minh họa bờ biển xanh và con thuyền nhỏ"><span class="sea-sun"></span><span class="sea-horizon"></span><span class="sea-wave wave-one"></span><span class="sea-wave wave-two"></span><span class="boat">⌁</span></div>
+                    <div class="story-copy"><div class="story-meta"><span class="category">BIỂN ĐẢO</span><span>4 phút đọc</span></div><h3>Ngày trốn phố ra đảo Lý Sơn</h3><p>Để gió mặn hong khô những bộn bề còn sót lại.</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="side-column" id="goi-y">
+            <div class="side-card editor-pick">
+                <div class="side-card-heading"><span class="eyebrow">BIÊN TẬP VIÊN CHỌN</span><span class="sparkle">✳</span></div>
+                <div class="pick-visual"><span class="pick-moon"></span><span class="pick-hill hill-one"></span><span class="pick-hill hill-two"></span><span class="pick-tent">⌂</span></div>
+                <div class="pick-copy"><span class="category">CẨM NANG</span><h3>Đi cắm trại lần đầu, cần chuẩn bị những gì?</h3><a href="#ve-chung-toi" class="text-link">Xem danh sách <span aria-hidden="true">→</span></a></div>
+            </div>
+
+            <div class="side-card newsletter" id="ve-chung-toi">
+                <div class="newsletter-icon">✉</div>
+                <p class="eyebrow">BẢN TIN ĐI ĐÂY ĐÓ</p>
+                <h3>Mỗi tuần một chuyến đi</h3>
+                <p>Nhận những câu chuyện và gợi ý điểm đến mới nhất.</p>
+                <a href="#dau-trang" class="newsletter-link">Đăng ký nhận tin <span aria-hidden="true">→</span></a>
+            </div>
+
+            <div class="side-note"><span aria-hidden="true">“</span><p>Đi không phải để đến một nơi, mà để nhìn thế giới bằng đôi mắt khác.</p><small>GHI CHÉP HÀNH TRÌNH</small></div>
+        </div>
+    </div>
+
+    <div class="site-footer"><a class="brand footer-brand" href="#dau-trang"><span class="brand-symbol">Đ</span><span>đi đây <strong>đó</strong></span></a><p>Mỗi hành trình bắt đầu bằng một bước chân.</p><a href="#dau-trang">Lên đầu trang ↑</a></div>
+</div>
+</body>
+</html>
