@@ -1,0 +1,399 @@
+:root {
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #1d2939;
+    background: #f4f6fa;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 56px 24px;
+}
+
+.page-shell,
+.form-shell {
+    width: min(100%, 1080px);
+    margin: 0 auto;
+}
+
+.form-shell {
+    width: min(100%, 650px);
+}
+
+.page-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 28px;
+}
+
+.eyebrow {
+    margin: 0 0 8px;
+    color: #5059c9;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+h1 {
+    margin: 0;
+    color: #172033;
+    font-size: clamp(1.8rem, 4vw, 2.3rem);
+    letter-spacing: -0.035em;
+}
+
+.subtitle {
+    margin: 10px 0 0;
+    color: #667085;
+    line-height: 1.6;
+}
+
+.panel {
+    overflow: hidden;
+    border: 1px solid #e5e9f1;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 16px 40px rgb(16 24 40 / 6%);
+}
+
+.button {
+    display: inline-flex;
+    min-height: 42px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button-primary {
+    background: #4146c8;
+    color: #fff;
+}
+
+.button-primary:hover {
+    background: #3439ad;
+}
+
+.button-secondary {
+    background: #eef0ff;
+    color: #4146c8;
+}
+
+.button-light {
+    border-color: #d9deea;
+    background: #fff;
+    color: #475467;
+}
+
+.button-danger {
+    background: #c63743;
+    color: #fff;
+}
+
+.filter-form {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 22px;
+    border-bottom: 1px solid #edf0f5;
+}
+
+.filter-form label {
+    color: #475467;
+    font-size: 0.85rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.filter-form input[type="search"] {
+    width: min(100%, 330px);
+    min-height: 42px;
+    padding: 0 13px;
+    border: 1px solid #d7dce7;
+    border-radius: 8px;
+    font: inherit;
+}
+
+.filter-form input:focus,
+.user-form input:focus {
+    border-color: #6569dc;
+    outline: 3px solid rgb(101 105 220 / 14%);
+}
+
+.reset-link,
+.back-link {
+    color: #5559c9;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.reset-link:hover,
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th,
+td {
+    padding: 17px 20px;
+    border-bottom: 1px solid #edf0f5;
+}
+
+th {
+    background: #fafbfe;
+    color: #667085;
+    font-size: 0.73rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+td {
+    color: #475467;
+    font-size: 0.9rem;
+}
+
+tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+tbody tr:hover {
+    background: #fafaff;
+}
+
+.id-cell {
+    color: #8a93a3;
+    font-variant-numeric: tabular-nums;
+}
+
+.user-name {
+    color: #222c41;
+    font-weight: 750;
+}
+
+.country-tag {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: #f0f2ff;
+    color: #5158bd;
+    font-size: 0.82rem;
+}
+
+.sort-links {
+    display: inline-flex;
+    gap: 5px;
+    margin-left: 5px;
+}
+
+.sort-links a {
+    display: inline-grid;
+    width: 20px;
+    height: 20px;
+    place-items: center;
+    border-radius: 5px;
+    background: #eceeff;
+    color: #4146c8;
+    font-size: 0.82rem;
+    text-decoration: none;
+}
+
+.sort-links a:hover {
+    background: #dfe2ff;
+}
+
+.actions {
+    white-space: nowrap;
+}
+
+.actions a {
+    margin-right: 10px;
+    color: #5158c8;
+    font-size: 0.84rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.actions a:hover {
+    text-decoration: underline;
+}
+
+.actions .delete-action {
+    color: #bd3541;
+}
+
+.empty-state {
+    padding: 44px 20px;
+    color: #7b8495;
+    text-align: center;
+}
+
+.panel-footer {
+    padding: 14px 22px;
+    border-top: 1px solid #edf0f5;
+    color: #7b8495;
+    font-size: 0.82rem;
+}
+
+.flash {
+    margin-bottom: 18px;
+    padding: 13px 16px;
+    border: 1px solid #b9e8d0;
+    border-radius: 9px;
+    background: #effbf4;
+    color: #167344;
+    font-weight: 650;
+}
+
+.form-shell > .back-link {
+    display: inline-block;
+    margin: 0 0 18px 2px;
+}
+
+.form-panel,
+.confirm-panel,
+.error-panel {
+    padding: 32px;
+}
+
+.form-panel .subtitle {
+    margin-bottom: 24px;
+}
+
+.user-form {
+    display: grid;
+    gap: 10px;
+}
+
+.user-form label {
+    margin-top: 7px;
+    color: #344054;
+    font-size: 0.88rem;
+    font-weight: 700;
+}
+
+.user-form input {
+    width: 100%;
+    min-height: 44px;
+    padding: 12px 13px;
+    border: 1px solid #d5dae5;
+    border-radius: 8px;
+    font: inherit;
+}
+
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.form-error {
+    margin: 0 0 18px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    background: #fff1f1;
+    color: #a52d37;
+}
+
+.confirm-panel,
+.error-panel {
+    text-align: center;
+}
+
+.warning-icon {
+    display: grid;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: #fff0e5;
+    color: #c35b19;
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.confirm-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 24px 0;
+    padding: 18px;
+    border-radius: 10px;
+    background: #f8f9fc;
+    text-align: left;
+}
+
+.confirm-details span {
+    color: #7b8495;
+}
+
+.confirm-details strong {
+    text-align: right;
+}
+
+.confirm-panel .form-actions {
+    justify-content: center;
+}
+
+.error-panel .button {
+    margin-top: 20px;
+}
+
+@media (max-width: 720px) {
+    body {
+        padding: 32px 14px;
+    }
+
+    .page-header {
+        align-items: start;
+        flex-direction: column;
+    }
+
+    .filter-form {
+        flex-wrap: wrap;
+        padding: 16px;
+    }
+
+    .filter-form label {
+        width: 100%;
+    }
+
+    .filter-form input[type="search"] {
+        width: 100%;
+    }
+
+    th,
+    td {
+        padding: 14px 15px;
+    }
+
+    .form-panel,
+    .confirm-panel,
+    .error-panel {
+        padding: 24px 20px;
+    }
+}

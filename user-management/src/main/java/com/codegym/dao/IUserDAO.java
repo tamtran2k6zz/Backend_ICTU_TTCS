@@ -2,25 +2,18 @@ package com.codegym.dao;
 
 import com.codegym.model.User;
 
+import java.sql.SQLException;
 import java.util.List;
 
-/**
- * Declares JDBC data-access operations for user records.
- */
+/** Defines CRUD, country-filter, and name-order operations for users. */
 public interface IUserDAO {
+    void insertUser(User user) throws SQLException;
 
-    /** Declares insertion of a user record. */
-    void insertUser(User user) throws Exception;
+    User selectUser(int id) throws SQLException;
 
-    /** Declares retrieval of one user by identifier. */
-    User selectUser(int id);
+    List<User> selectAllUsers(String country, String sortOrder) throws SQLException;
 
-    /** Declares retrieval of all user records. */
-    List<User> selectAllUsers();
+    boolean deleteUser(int id) throws SQLException;
 
-    /** Declares deletion of a user by identifier. */
-    boolean deleteUser(int id) throws Exception;
-
-    /** Declares update of a user record. */
-    boolean updateUser(User user) throws Exception;
+    boolean updateUser(User user) throws SQLException;
 }
