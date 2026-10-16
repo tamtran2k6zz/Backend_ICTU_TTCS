@@ -1,0 +1,3 @@
+# Layout strategy — MetricsHub
+
+MetricsHub uses each layout tool where its strengths fit. The navigation is a content-first Flexbox row: links keep their natural width, wrap when space runs out, and the long German label can break safely instead of forcing horizontal scrolling. The dashboard has one `.grid-dashboard` parent with sibling widgets. CSS Grid handles its two-dimensional layout: KPI cards sit beside the larger chart and activity panels, then collapse to two columns and one column at narrower widths. Pricing uses Bootstrap’s `container-fluid`, `row`, `col-12 col-md-4`, and `card` components. Its columns stack on small screens and share the row evenly from the medium breakpoint. Custom CSS styles pricing content but does not recreate Bootstrap’s column layout.
