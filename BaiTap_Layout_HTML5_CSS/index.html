@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bố cục trang web mẫu sử dụng các thẻ ngữ nghĩa của HTML5 và CSS.">
+    <title>Bố cục HTML5 — Góc sống xanh</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body id="dau-trang">
+<header class="site-header">
+    <a class="brand" href="#dau-trang" aria-label="Góc sống xanh, về đầu trang">
+        <span class="brand-icon" aria-hidden="true">g.</span>
+        <span>góc <strong>sống xanh</strong></span>
+    </a>
+    <p class="header-note">Sống chậm · Sống lành · Sống xanh</p>
+</header>
+
+<nav class="site-nav" aria-label="Điều hướng chính">
+    <a class="active" href="#trang-chu">Trang chủ</a>
+    <a href="#bai-viet">Bài viết</a>
+    <a href="#goi-y">Gợi ý hôm nay</a>
+    <a href="#ve-chung-toi">Về chúng tôi</a>
+</nav>
+
+<main class="page-layout" id="trang-chu">
+    <section class="content-section" id="bai-viet" aria-labelledby="section-title">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">TỪ NHỮNG ĐIỀU BÌNH DỊ</p>
+                <h1 id="section-title">Một chút xanh mỗi ngày</h1>
+            </div>
+            <span class="section-tag">GÓC SỐNG LÀNH</span>
+        </div>
+
+        <article class="feature-article">
+            <div class="feature-art" aria-hidden="true">
+                <span class="sun"></span>
+                <span class="hill hill-back"></span>
+                <span class="hill hill-front"></span>
+                <span class="plant plant-one">♧</span>
+                <span class="plant plant-two">♧</span>
+            </div>
+            <div class="feature-copy">
+                <p class="article-meta">LỐI SỐNG <span>·</span> 5 PHÚT ĐỌC</p>
+                <h2>Ban công nhỏ, khu vườn của riêng mình</h2>
+                <p>Không cần một khoảng sân rộng để bắt đầu sống gần thiên nhiên. Vài chậu cây hợp nắng, một chiếc bình tưới nhỏ và đôi phút chăm sóc mỗi ngày cũng đủ làm ban công thành nơi bình yên nhất nhà.</p>
+                <a class="read-link" href="#bai-viet-moi">Đọc bài viết <span aria-hidden="true">→</span></a>
+            </div>
+        </article>
+
+        <div class="article-list" id="bai-viet-moi">
+            <article class="article-card">
+                <span class="card-icon icon-sand" aria-hidden="true">☼</span>
+                <div><p class="article-meta">THÓI QUEN <span>·</span> 3 PHÚT ĐỌC</p><h3>Bắt đầu buổi sáng không vội vàng</h3><p>Thử dành năm phút đầu ngày cho một ly nước và một nhịp thở sâu.</p></div>
+            </article>
+            <article class="article-card">
+                <span class="card-icon icon-sage" aria-hidden="true">✿</span>
+                <div><p class="article-meta">SỐNG XANH <span>·</span> 4 PHÚT ĐỌC</p><h3>Mang theo chiếc túi vải quen thuộc</h3><p>Một thay đổi nhỏ giúp những lần mua sắm nhẹ nhàng hơn với môi trường.</p></div>
+            </article>
+        </div>
+    </section>
+
+    <aside class="sidebar" id="goi-y" aria-label="Gợi ý và thông tin thêm">
+        <section class="quote-card">
+            <p class="eyebrow">GỢI Ý HÔM NAY</p>
+            <span class="quote-mark" aria-hidden="true">“</span>
+            <blockquote>Một khu vườn không cần rộng, chỉ cần đủ để ta muốn dừng chân.</blockquote>
+            <p class="quote-author">— Góc sống xanh</p>
+        </section>
+
+        <section class="topic-card">
+            <p class="eyebrow">CHỦ ĐỀ ĐƯỢC YÊU THÍCH</p>
+            <a href="#bai-viet"># sống tối giản</a>
+            <a href="#bai-viet"># chăm sóc bản thân</a>
+            <a href="#bai-viet"># gần gũi thiên nhiên</a>
+            <a href="#bai-viet"># thói quen tốt</a>
+        </section>
+
+        <section class="newsletter" id="ve-chung-toi">
+            <span class="newsletter-icon" aria-hidden="true">✳</span>
+            <h2>Thư từ khu vườn</h2>
+            <p>Một chút cảm hứng sống lành gửi đến bạn mỗi tuần.</p>
+            <a href="#bai-viet">Khám phá bài viết <span aria-hidden="true">↗</span></a>
+        </section>
+    </aside>
+</main>
+
+<footer class="site-footer">
+    <p>© 2026 Góc sống xanh <span aria-hidden="true">·</span> Được tạo bằng các thẻ ngữ nghĩa HTML5</p>
+    <a href="#dau-trang">Lên đầu trang ↑</a>
+</footer>
+</body>
+</html>
