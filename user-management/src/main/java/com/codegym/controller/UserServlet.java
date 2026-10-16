@@ -31,6 +31,8 @@ public class UserServlet extends HttpServlet {
                 case "edit" -> showUserForm(request, response, "/user/edit.jsp");
                 case "delete" -> showUserForm(request, response, "/user/delete.jsp");
                 case "test-without-tran" -> testWithoutTran(request, response);
+                case "test-use-tran" -> testUseTran(request, response, true);
+                case "test-use-tran-success" -> testUseTran(request, response, false);
                 case "list", "search", "sort" -> listUsers(request, response);
                 default -> response.sendError(HttpServletResponse.SC_NOT_FOUND);
             }
@@ -45,6 +47,29 @@ public class UserServlet extends HttpServlet {
             throws IOException {
         userDAO.insertUpdateWithoutTransaction();
         response.sendRedirect(request.getContextPath() + "/users?message=non-transaction-demo");
+    }
+
+    private void testUseTran(HttpServletRequest request, HttpServletResponse response,
+                             boolean demonstrateRollback)
+            throws ServletException, IOException {
+        try {
+            if (demonstrateRollback) {
+                userDAO.insertUpdateUseTransactionWithFailure();
+                response.sendRedirect(request.getContextPath() + "/users?message=transaction-unexpected-success");
+            } else {
+                userDAO.insertUpdateUseTransaction();
+                response.sendRedirect(request.getContextPath() + "/users?message=transaction-committed");
+            }
+        } catch (SQLException exception) {
+            if (demonstrateRollback && exception.getMessage() != null
+                    && exception.getMessage().contains("parameter 1")) {
+                System.out.println("UPDATE lỗi như dự kiến; transaction đã rollback.");
+                exception.printStackTrace();
+                response.sendRedirect(request.getContextPath() + "/users?message=transaction-rolled-back");
+                return;
+            }
+            showDatabaseError(request, response);
+        }
     }
 
     @Override

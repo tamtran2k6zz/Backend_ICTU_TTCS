@@ -24,6 +24,13 @@ Mở `/users?action=test-without-tran` hoặc chọn **Chạy demo không Transa
 
 Endpoint này chủ động xóa và tạo lại riêng bảng `Employee` mỗi lần chạy để dữ liệu minh họa có kết quả ổn định. Chỉ chạy trong database demo của bài thực hành.
 
+## Demo SQL có sử dụng transaction
+
+- `/users?action=test-use-tran` cố tình để thiếu tham số UPDATE. Hai INSERT được rollback; bảng `Employee` trống và lỗi được ghi vào log.
+- `/users?action=test-use-tran-success` chạy cùng quy trình với tham số UPDATE đúng, sau đó commit. `Quynh` có lương `999.99`, `Ngan` có lương `20.00`.
+
+Cả hai URL đều xóa và tạo lại riêng bảng `Employee` trước giao dịch để kết quả có thể lặp lại. Mỗi lần chạy sẽ thay thế nội dung hiện có của bảng này.
+
 ## Đóng gói và chạy
 
 ```sh

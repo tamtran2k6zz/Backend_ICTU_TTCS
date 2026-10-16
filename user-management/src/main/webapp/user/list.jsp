@@ -19,6 +19,8 @@
         </div>
         <a class="button button-primary" href="${pageContext.request.contextPath}/users?action=create">+ Thêm User</a>
         <a class="button button-secondary" href="${pageContext.request.contextPath}/users?action=test-without-tran">Chạy demo không Transaction</a>
+        <a class="button button-secondary" href="${pageContext.request.contextPath}/users?action=test-use-tran">Kiểm tra rollback</a>
+        <a class="button button-secondary" href="${pageContext.request.contextPath}/users?action=test-use-tran-success">Chạy và commit</a>
     </header>
 
     <c:if test="${not empty param.message}">
@@ -28,6 +30,9 @@
                 <c:when test="${param.message == 'edit'}">Đã cập nhật User thành công.</c:when>
                 <c:when test="${param.message == 'delete'}">Đã xóa User thành công.</c:when>
                 <c:when test="${param.message == 'non-transaction-demo'}">Demo đã chạy. Kiểm tra console để xem lỗi UPDATE và bảng Employee để xác nhận hai INSERT vẫn được lưu.</c:when>
+                <c:when test="${param.message == 'transaction-rolled-back'}">UPDATE lỗi như dự kiến; transaction đã rollback. Bảng Employee hiện không còn bản ghi.</c:when>
+                <c:when test="${param.message == 'transaction-committed'}">Transaction đã commit: Quynh có lương 999.99 và Ngan có lương 20.00 trong bảng Employee.</c:when>
+                <c:when test="${param.message == 'transaction-unexpected-success'}">Luồng kiểm tra rollback không phát sinh lỗi; vui lòng kiểm tra cấu hình database/driver.</c:when>
             </c:choose>
         </div>
     </c:if>

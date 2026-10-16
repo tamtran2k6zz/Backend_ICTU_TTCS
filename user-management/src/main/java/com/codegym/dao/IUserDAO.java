@@ -19,6 +19,10 @@ public interface IUserDAO {
 
     void insertUpdateWithoutTransaction() throws SQLException;
 
+    void insertUpdateUseTransaction() throws SQLException;
+
+    void insertUpdateUseTransactionWithFailure() throws SQLException;
+
     List<User> selectAllUsers(String country, String sortOrder) throws SQLException;
 
     boolean deleteUser(int id) throws SQLException;

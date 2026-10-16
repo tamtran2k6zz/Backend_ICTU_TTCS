@@ -187,6 +187,54 @@ public class UserDAO implements IUserDAO {
     }
 
     @Override
+    public void insertUpdateUseTransaction() throws SQLException {
+        executeEmployeeTransaction(false);
+    }
+
+    @Override
+    public void insertUpdateUseTransactionWithFailure() throws SQLException {
+        executeEmployeeTransaction(true);
+    }
+
+    private void executeEmployeeTransaction(boolean failUpdate) throws SQLException {
+        try (Connection connection = getConnection()) {
+            // MySQL DDL implicitly commits, so reset the demo table before opening the transaction.
+            try (Statement statement = connection.createStatement()) {
+                statement.execute(SQL_TABLE_DROP_EMPLOYEE);
+                statement.execute(SQL_TABLE_CREATE_EMPLOYEE);
+            }
+
+            connection.setAutoCommit(false);
+            try (PreparedStatement insert = connection.prepareStatement(SQL_INSERT_EMPLOYEE);
+                 PreparedStatement update = connection.prepareStatement(SQL_UPDATE_EMPLOYEE)) {
+                insert.setString(1, "Quynh");
+                insert.setBigDecimal(2, new BigDecimal("10.00"));
+                insert.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));
+                insert.executeUpdate();
+
+                insert.setString(1, "Ngan");
+                insert.setBigDecimal(2, new BigDecimal("20.00"));
+                insert.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));
+                insert.executeUpdate();
+
+                if (failUpdate) {
+                    // Intentional missing parameter 1 to demonstrate rollback after both INSERTs.
+                    update.setBigDecimal(2, new BigDecimal("999.99"));
+                    update.setString(2, "Quynh");
+                } else {
+                    update.setBigDecimal(1, new BigDecimal("999.99"));
+                    update.setString(2, "Quynh");
+                }
+                update.executeUpdate();
+                connection.commit();
+            } catch (SQLException | RuntimeException failure) {
+                rollback(connection, failure);
+                throw failure;
+            }
+        }
+    }
+
+    @Override
     public List<User> selectAllUsers(String country, String sortOrder) throws SQLException {
         boolean filterByCountry = country != null && !country.isBlank();
         String direction = "DESC".equalsIgnoreCase(sortOrder) ? "DESC" : "ASC";
